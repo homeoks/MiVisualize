@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<script src="js/d3.js"></script>
+</head>
+<style type="text/css">
+	/* 13. Basic Styling with CSS */
+	svg {
+		fill: none;
+	}
+	/* Style the lines by removing the fill and applying a stroke */
+	.line {
+		fill: none;
+		stroke-width: 1;
+	}
+	.divFrom {
+		position: absolute;
+		top: 120px;
+		left: 140px;
+	}
+	.divTo {
+		position: absolute;
+		top: 120px;
+		left: 340px;
+	}
+	/*.overlay {
+		fill: none;
+		pointer-events: all;
+	}*/
+
+	/* Style the dots by assigning a fill and stroke */
+	/*.dot {
+		fill: #ffab00;
+		stroke: #fff;
+	}*/
+
+	/*.focus circle {
+		fill: none;
+		stroke: steelblue;
+	}*/
+</style>
+<!-- Body tag is where we will append our SVG and SVG objects-->
+<body>
+<div class="divFrom">
+	<p class="textFrom">0</p>
+	<input type="range" min="0" max="1000" id="fromIndex" name="fromIndex" value="0"/>
+</div>
+<div class="divTo">
+	<p class="textTo">1000</p>
+	<input type="range" min="0" max="1000" id="toIndex" value="1000" oninput="textTo.html = toIndex.value"/>
+</div>
+</body>
+<script src="js/time.js"></script>

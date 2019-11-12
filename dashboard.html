@@ -1,0 +1,44 @@
+<head>
+	<script src="js/d3.js"></script>
+</head>
+
+<style>
+	body {
+		width: 1000000000000px;
+	}
+	.chart rect {
+		fill: steelblue;
+	}
+
+	.chart text {
+		fill: white;
+		font: 10px sans-serif;
+		text-anchor: end;
+	}
+	.zoom {
+		padding: 50px;
+		background-color: green;
+		transition: transform .2s; /* Animation */
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+	}
+	.box {
+		-webkit-clip-path:polygon(0 0, 100% 35%, 100% 65%, 0% 100%);
+		clip-path:polygon(0 0, 100% 35%, 100% 65%, 0% 100%);
+		width:200px;
+		height:200px;
+		background:#E0E6E5;
+	}
+	.zoom:hover {
+		transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+	}
+</style>
+<body>
+<div id="graph"></div>	
+
+<div class="box"></div>
+</body>
+
+
+<script src="js/dashboard.js"></script>
