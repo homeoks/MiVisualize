@@ -23,6 +23,14 @@
 		top: 120px;
 		left: 340px;
 	}
+	.divRadio {
+		position: absolute;
+		top: 80px;
+		left: 300px;
+	}
+	.txtInput{
+		border:none;
+	}
 	/*.overlay {
 		fill: none;
 		pointer-events: all;
@@ -41,13 +49,22 @@
 </style>
 <!-- Body tag is where we will append our SVG and SVG objects-->
 <body>
+	<div class="divRadio">
+
+		<input type="radio" name="fileName" id="1K" class="fileName" value="1K" checked/>
+		<label for="1K">1K</label>
+		<input type="radio" name="fileName" id="10K"  class="fileName"  value="10K"/>
+		<label for="10K">10K</label>
+		<input type="radio" name="fileName" id="100K"  class="fileName"  value="100K"/>
+		<label for="100K">100K</label>
+	</div>
 <div class="divFrom">
-	<p class="textFrom">0</p>
+	<input type="number" id="txtFrom" class="txtInput" value="0"><br />
 	<input type="range" min="0" max="1000" id="fromIndex" name="fromIndex" value="0"/>
 </div>
 <div class="divTo">
-	<p class="textTo">1000</p>
-	<input type="range" min="0" max="1000" id="toIndex" value="1000" oninput="textTo.html = toIndex.value"/>
+	<input type="number" id="txtTo"  class="txtInput" value="1000"><br />
+	<input type="range" min="0" max="1000" id="toIndex" value="1000"/>
 </div>
 </body>
-<script src="js/time.js"></script>
+<script src="js/time2.js"></script>
