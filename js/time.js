@@ -1,25 +1,8 @@
-﻿var fromIndex = 0;
-var toIndex = 1000;
-var fileName = "1K";
-var d3FromIndexRange = d3.select("#fromIndex");
-var d3ToIndexRange = d3.selectAll("#toIndex");
-var d3FromIndexInput = d3.selectAll("#txtFrom");
-var d3ToIndexInput = d3.selectAll("#txtTo");
+﻿
+window.onload = function () {
+	Run("1K");
+};
 var d3FileName = d3.selectAll(".fileName");
-
-var maxRange = 1000;
-d3FromIndexRange.on("input", function () {
-	fromIndex = parseInt(this.value);
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
-});
-d3FromIndexInput.on("input", function () {
-	fromIndex = parseInt(this.value);
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
-});
-d3ToIndexInput.on("input", function () {
-	toIndex = parseInt(this.value);
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
-});
 
 d3FileName.on("input", function () {
 	fileName = this.value;
@@ -41,23 +24,9 @@ d3FileName.on("input", function () {
 		maxRange = 100000;
 	}
 
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
+	Run(fileName);
 });
-d3ToIndexRange.on("input", function () {
-	toIndex = parseInt(this.value);
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
-});
-window.onload = function () {
-	DrawChartWithIndex(fromIndex, toIndex, fileName);
-};
-function DrawChartWithIndex(fromIndex, toIndex, fileName) {
-	d3FromIndexInput.property("value", fromIndex);
-	d3ToIndexInput.property("value", toIndex);
-
-	if (fromIndex >= toIndex) {
-		fromIndex = 0;
-		toIndex = maxRange;
-	}
+function Run(fileName) {
 	d3.text("./" + fileName + ".txt").then(function (text) {
 		var dataIndex = d3.csvParseRows(text).map(function (row) {
 			var d = row[0].split("	");
@@ -79,7 +48,38 @@ function DrawChartWithIndex(fromIndex, toIndex, fileName) {
 					mi: d[6]
 				};
 			});
+			var fromIndex = 0;
+			var toIndex = 1000;
 
+			var d3FromIndexRange = d3.select("#fromIndex");
+			var d3ToIndexRange = d3.selectAll("#toIndex");
+			var d3FromIndexInput = d3.selectAll("#txtFrom");
+			var d3ToIndexInput = d3.selectAll("#txtTo");
+
+			var maxRange = 1000;
+			d3FromIndexRange.on("input", function () {
+				fromIndex = parseInt(this.value);
+				DrawChartWithIndex(fromIndex, toIndex, fileName);
+			});
+			d3FromIndexInput.on("input", function () {
+				fromIndex = parseInt(this.value);
+				DrawChartWithIndex(fromIndex, toIndex, fileName);
+			});
+			d3ToIndexInput.on("input", function () {
+				toIndex = parseInt(this.value);
+				DrawChartWithIndex(fromIndex, toIndex, fileName);
+			});
+			d3ToIndexRange.on("input", function () {
+				toIndex = parseInt(this.value);
+				DrawChartWithIndex(fromIndex, toIndex, fileName);
+			});
+			d3FromIndexInput.property("value", fromIndex);
+			d3ToIndexInput.property("value", toIndex);
+
+			if (fromIndex >= toIndex) {
+				fromIndex = 0;
+				toIndex = maxRange;
+			}
 			AppendGraph(dataIndex, dataMi, fromIndex, toIndex);
 		});
 	});
